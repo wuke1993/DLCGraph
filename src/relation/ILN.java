@@ -31,7 +31,7 @@ public class ILN
 	}
 	
 	ILN() {
-		weightArray = GenAdjacencyMatrix.genAdjacencyMatrix();
+		weightArray = GenAdjacencyMatrix.genAdjacencyMatrix(1, 1, 2, 0.5);
 		verticeSize = weightArray.length;
 		
 		cacualteDistanceArray();

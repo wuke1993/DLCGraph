@@ -15,8 +15,8 @@ import utility.StoreStringIntoFile;
 public class GenLinks {
 	
 	private static String LINKS_PATH = "e:\\data\\my_kus\\links_4th_semester_kus_videos 2211.txt"; // 原始，每门课都各自从 1 开始编号
-	private static String LINKS_PATH_FINAL = "e:\\data\\my_kus\\links_4th_semester_new.txt";
-	private static int[] NODES_NUM = {396, 680, 973, 1073, 1127, 1197}; // {396, 284, 293, 100, 54, 70}
+	public static String LINKS_PATH_FINAL = "e:\\data\\my_kus\\links_4th_semester.txt";
+	public static int[] NODES_NUM = {396, 680, 973, 1073, 1127, 1197}; // {396, 284, 293, 100, 54, 70}
 	private static int[] LINKS_NUM = {405, 726, 1033, 1455, 1775, 2103, 2211}; // {405, 321, 307, 422, 320, 328}
 	
 	public static void main(String[] args) {
