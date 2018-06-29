@@ -24,7 +24,7 @@ public class GenLinks {
 		StoreStringIntoFile.storeString(result, LINKS_PATH_FINAL, false);
 	}
 	
-	private static String genLinks() {	
+	private static String genLinks() {
 		String result = "";
 		
 		File file = new File(LINKS_PATH);
