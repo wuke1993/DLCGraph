@@ -30,7 +30,9 @@ public class TestECharts extends HttpServlet {
 			throws ServletException, IOException {
 		
 		// String json = ReadFileToString.readFile("e:\\data\\my_kus\\echarts\\webkit-dep-4th-semester-Java.json");
-		String json = ReadFileToString.readFile("e:\\data\\my_kus\\echarts\\webkit-dep-4th-semester-2.json");
+		String json = ReadFileToString.readFile("e:\\data\\my_kus\\echarts\\webkit-dep-4th-semester.json");
+		
+		//String json = ReadFileToString.readFile("e:\\data\\cf.json");
 		
         resp.setContentType("application/json;charset=utf-8");
         resp.addHeader("Access-Control-Allow-Origin", "*");
