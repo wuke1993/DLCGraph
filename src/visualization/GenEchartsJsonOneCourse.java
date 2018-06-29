@@ -30,12 +30,7 @@ public class GenEchartsJsonOneCourse {
 		
 		GenEchartsJsonOneCourse.genAll(GenEchartsJsonOneCourse.COURSE_NAME, nodesJsonArr, edgesJsonArr, GenEchartsJsonOneCourse.RESULT_PATH);
 	}
-
-	/**
-	 * 
-	 * @param kusPath
-	 * @return
-	 */
+	
     private static JSONArray genNodes(String kusPath) {
 		
         ArrayList<String> kus = new ArrayList<String>();
@@ -74,11 +69,6 @@ public class GenEchartsJsonOneCourse {
 		return jsonArr;
 	}
     
-    /**
-     * 
-     * @param linksPath
-     * @return
-     */
     private static JSONArray genEdges(String linksPath) {
 		JSONArray jsonArr = new JSONArray();
 		JSONObject json = null;
