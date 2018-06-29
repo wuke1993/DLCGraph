@@ -22,7 +22,7 @@ public class GenEchartsJson {
 
 	private static String NODES_PATH = "e:\\data\\my_kus\\nodes_4th_semester_kus_videos 1197.txt";
 	private static String LINKS_PATH = "e:\\data\\my_kus\\links_4th_semester_kus_videos 2211.txt";
-	private static String SEMESTER_PATH = "e:\\data\\my_kus\\echarts\\webkit-dep-4th-semester-2.json";
+	private static String SEMESTER_PATH = "e:\\data\\my_kus\\echarts\\webkit-dep-4th-semester.json";
 	
 	public static void main(String[] args) {
 
@@ -30,12 +30,12 @@ public class GenEchartsJson {
 		JSONArray linksJsonArr = GenEchartsJson.genLinks(GenEchartsJson.LINKS_PATH);
 		
 		ArrayList<String> courses_names = new ArrayList<String>();
-		courses_names.add("operating_system");
-		courses_names.add("computer_network");
-		courses_names.add("java");
-		courses_names.add("operating_system_videos");
-		courses_names.add("computer_network_videos");
-		courses_names.add("java_videos");
+		courses_names.add("os_ku");
+		courses_names.add("cn_ku");
+		courses_names.add("java_ku");
+		courses_names.add("os_vl");
+		courses_names.add("cn_vl");
+		courses_names.add("java_vl");
 		
 		GenEchartsJson.genAll(nodesJsonArr, linksJsonArr, courses_names, SEMESTER_PATH);
 	}
@@ -121,31 +121,31 @@ public class GenEchartsJson {
 				json_normal = new JSONObject();
 				json_color = new JSONObject();
 				
-				if (i < 405) {
+				if (i < 405) { // OS KU-KU
 					tag = Integer.parseInt(str.split(",")[0]) - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) - 1;
-					json_color.put("color", "#ccc");
-				} else if (404 < i && i < 726) {
+					json_color.put("color", "#000");
+				} else if (404 < i && i < 726) { // CN KU-KU
 					tag = Integer.parseInt(str.split(",")[0]) + 396 - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) + 396 - 1;
-					json_color.put("color", "#ccc");
-				} else if (725 < i && i < 1033) {
+					json_color.put("color", "#000");
+				} else if (725 < i && i < 1033) { // Java KU-KU
 					tag = Integer.parseInt(str.split(",")[0]) + 680 - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) + 680 - 1;
-					json_color.put("color", "#ccc");
-				} else if (1032 < i && i < 1455) {
+					json_color.put("color", "#000");
+				} else if (1032 < i && i < 1455) { // OS VL-KU
 					tag = Integer.parseInt(str.split(",")[0]) + 973 - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) - 1;
-					json_color.put("color", "#ccc");
-				} else if (1454 < i && i < 1775) {
+					json_color.put("color", "#000");
+				} else if (1454 < i && i < 1775) { // CN VL-KU
 					tag = Integer.parseInt(str.split(",")[0]) + 1073 - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) + 396 - 1;
-					json_color.put("color", "#ccc");
-				} else if (1774 < i && i < 2103) {
+					json_color.put("color", "#000");
+				} else if (1774 < i && i < 2103) { // Java VL-KU
 					tag = Integer.parseInt(str.split(",")[0]) + 1127 - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) + 680 - 1;
-					json_color.put("color", "#ccc");
-				} else {
+					json_color.put("color", "#000");
+				} else { // KU-KU’ 跨课程知识点关联
 					tag = Integer.parseInt(str.split(",")[0]) - 1;
 					tmp_tag = Integer.parseInt(str.split(",")[1]) - 1;
 					json_color.put("color", "#f00");
@@ -183,7 +183,6 @@ public class GenEchartsJson {
 	 * @param path
 	 */
 	private static void genAll(JSONArray nodesJsonArr, JSONArray linksJsonArr, ArrayList<String> courses_names, String path) {
-		
 		JSONArray categoriesJsonArr = new JSONArray();
 		for (String str : courses_names) {
 			JSONObject course = new JSONObject();
