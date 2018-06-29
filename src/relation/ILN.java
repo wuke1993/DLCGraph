@@ -5,7 +5,7 @@ import utility.StoreStringIntoFile;
 
 public class ILN
 {
-	private static String AdjacencyMatrix = "e:\\data\\my_kus\\relationship_videos.txt";
+	private static String VideoRelationship = "e:\\data\\video_relationship\\videos_relationship.txt";
 	private double[][] weightArray; // 邻接矩阵
 	private double[][] aArray; // clone of weightArray
 	private double[][] dArray; // 度矩阵
@@ -19,19 +19,48 @@ public class ILN
 		ILN obj = new ILN();
 		double[][] result = obj.getDisArray();
 		
+		double[][] videosRelation = ILN.genRelation(result);
+		
 		StringBuilder s = new StringBuilder();
-		for (int i = 973; i < 1197; i++) {
-			for (int j = 973; j < 1197; j++) {
-				s.append(result[i][j] + "  ");
+		for (int i = 0; i < 219; i++) {
+			for (int j = 0; j < 219; j++) {
+				s.append(videosRelation[i][j] + " ");
 			}
 			s.append("\r\n");
 		}
 		
-		StoreStringIntoFile.storeString(s.toString(), ILN.AdjacencyMatrix, false);
+		StoreStringIntoFile.storeString(s.toString(), ILN.VideoRelationship, false);
+		//System.out.println(videosRelation[178][179]); // 0.6459074452950623 0.2938348310535379 0.40964853375138977
+	}
+	
+	/**
+	 * 通过平均通勤时长计算课程视频关联度
+	 * @param distance
+	 * @return
+	 */
+	private static double[][] genRelation(double[][] distance) {
+		double[][] videosRelation = new double[224][224];
+		
+		double max = 0.0;
+		for (int i = 973; i < distance.length; i++) {
+			for (int j = 973; j < distance[0].length; j++) {
+				if (distance[i][j] > max) {
+					max  = distance[i][j];
+				}
+			}
+		}
+		
+		for (int i = 973; i < distance.length; i++) {
+			for (int j = 973; j < distance[0].length; j++) {
+				videosRelation[i - 973][j - 973] = 1 - distance[i][j] / max;
+			}
+		}
+		
+		return videosRelation;
 	}
 	
 	ILN() {
-		weightArray = GenAdjacencyMatrix.genAdjacencyMatrix(1, 1, 2, 0.5);
+		weightArray = GenAdjacencyMatrix.genAdjacencyMatrix(GenLinks.LINKS_PATH_FINAL, 1, 1, 1); // 删除5个总复习视频，权重都为1
 		verticeSize = weightArray.length;
 		
 		cacualteDistanceArray();
